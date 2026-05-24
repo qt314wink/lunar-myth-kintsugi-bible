@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunar Myth Prompt Mixer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #FFD700;
+      --obsidian: #0a0a0a;
+      --obsidian-light: #1a1a1a;
+      --teal: #20B2AA;
+      --cream: #F5F5DC;
+      --text-main: #e8e4dc;
+      --text-dim: #a09888;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: var(--obsidian);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    h1 {
+      font-family: 'Cinzel Decorative', serif;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--text-dim);
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+    .mixer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .mixer-group {
+      background: var(--obsidian-light);
+      border: 1px solid rgba(212,175,55,0.15);
+      border-radius: 4px;
+      padding: 1rem;
+    }
+    .mixer-group label {
+      display: block;
+      font-family: 'Cinzel Decorative', serif;
+      color: var(--gold);
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+    .mixer-group select {
+      width: 100%;
+      background: var(--obsidian);
+      color: var(--text-main);
+      border: 1px solid rgba(212,175,55,0.2);
+      padding: 0.6rem;
+      font-family: 'EB Garamond', serif;
+      font-size: 0.95rem;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .mixer-group select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .randomize-all {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto 2rem;
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(135deg, #B8941F, var(--gold));
+      color: var(--obsidian);
+      border: none;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+    .randomize-all:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(212,175,55,0.3);
+    }
+    .output-area {
+      background: var(--obsidian-light);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 4px;
+      padding: 1.5rem;
+      position: relative;
+    }
+    .output-area h3 {
+      font-family: 'Cinzel Decorative', serif;
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+    #promptOutput {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--cream);
+      min-height: 120px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(212,175,55,0.15);
+      color: var(--gold);
+      border: 1px solid rgba(212,175,55,0.3);
+      padding: 0.4rem 0.8rem;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 0.75rem;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+    .copy-btn:hover {
+      background: rgba(212,175,55,0.3);
+    }
+    .copy-btn.copied {
+      background: rgba(32,178,170,0.3);
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+    .params {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(212,175,55,0.1);
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+    .params label { display: flex; align-items: center; gap: 0.3rem; }
+    .params input[type="checkbox"] {
+      accent-color: var(--gold);
+    }
+    .history {
+      margin-top: 2rem;
+    }
+    .history h3 {
+      font-family: 'Cinzel Decorative', serif;
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+    .history-item {
+      background: var(--obsidian-light);
+      border: 1px solid rgba(212,175,55,0.08);
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .history-item:hover {
+      border-color: rgba(212,175,55,0.2);
+      color: var(--text-main);
+    }
+    @media (max-width: 600px) {
+      body { padding: 1rem; }
+      h1 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Lunar Myth Prompt Mixer</h1>
+    <p class="subtitle">Combine elements to forge unique prompts. Every combination is a new goddess.</p>
+
+    <button class="randomize-all" onclick="randomizeAll()">✦ Randomize All ✦</button>
+
+    <div class="mixer-grid">
+      <div class="mixer-group">
+        <label>Mood</label>
+        <select id="mood">
+          <option value="Luminous wonder">Luminous Wonder</option>
+          <option value="Melancholic reverie">Melancholic Reverie</option>
+          <option value="Defiant rebellion">Defiant Rebellion</option>
+          <option value="Sacred-profane tension">Sacred-Profane Tension</option>
+          <option value="Nocturnal mystery">Nocturnal Mystery</option>
+          <option value="Primordial chaos">Primordial Chaos</option>
+          <option value="Ethereal grace">Ethereal Grace</option>
+        </select>
+      </div>
+      <div class="mixer-group">
+        <label>Pose</label>
+        <select id="pose">
+          <option value="standing powerfully">Standing Powerfully</option>
+          <option value="floating gently">Floating Gently</option>
+          <option value="kneeling gracefully">Kneeling Gracefully</option>
+          <option value="leaping defiantly">Leaping Defiantly</option>
+          <option value="dancing slowly">Dancing Slowly</option>
+          <option value="sitting quietly">Sitting Quietly</option>
+          <option value="reaching upward">Reaching Upward</option>
+          <option value="arms outstretched">Arms Outstretched</option>
+        </select>
+      </div>
+      <div class="mixer-group">
+        <label>Collage Base</label>
+        <select id="collage">
+          <option value="sliced newspaper clippings and vintage photo cutouts">Newspaper + Photo</option>
+          <option value="layered Japanese newsprint and black-and-white portraits">Japanese Newsprint</option>
+          <option value="torn financial headlines and botanical illustrations">Financial + Botanical</option>
+          <option value="aged obituary text and scientific journal fragments">Obituary + Science</option>
+        </select>
+      </div>
+      <div class="mixer-group">
+        <label>Repair Style</label>
+        <select id="repair">
+          <option value="iridescent stained-glass mosaic shards and obsidian repaired by glowing golden kintsugi veins">Stained-Glass + Obsidian</option>
+          <option value="sharp obsidian fragments with thick bold golden kintsugi">Bold Obsidian</option>
+          <option value="delicate hairline kintsugi on fractured porcelain-white skin">Hairline Porcelain</option>
+          <option value="web-pattern kintsugi across shattered mosaic">Web Pattern</option>
+        </select>
+      </div>
+      <div class="mixer-group">
+        <label>Botanicals</label>
+        <select id="botanicals">
+          <option value="lush regenerative moonflowers and iridescent ivy">Moonflowers + Ivy</option>
+          <option value="thorned shadow roses and bioluminescent vines">Shadow Roses + Vines</option>
+          <option value="star ferns and lunar orchids cascading">Star Ferns + Orchids</option>
+          <option value="night jasmine and obsidian lilies">Night Jasmine + Lilies</option>
+          <option value="evening primrose and silver artemisia">Primrose + Artemisia</option>
+          <option value="wild angel's trumpet and glowing mushrooms">Angel's Trumpet + Mushrooms</option>
+        </select>
+      </div>
+      <div class="mixer-group">
+        <label>Tactility</label>
+        <select id="tactility">
+          <option value="extreme heavy visible embroidery with raised thread patterns and clustered pearl beading">Embroidery + Pearl Beading</option>
+          <option value="dense sashiko stitching in Kikkō pattern with yarn tufting">Sashiko Kikkō + Tufting</option>
+          <option value="intricate Yabane arrow-feather stitching with crystal clusters">Yabane + Crystals</option>
+          <option value="heavy chain stitch vines with matte glass bead clusters">Chain Stitch + Glass Beads</option>
+        </select>
+      </div>
+      <div class="mixer-group">
+        <label>Glitch Intensity</label>
+        <select id="glitch">
+          <option value="subtle datamosh glitch distortion melting collage edges">Subtle Edge Melt</option>
+          <option value="controlled pixel sorting on sleeve and hem transitions">Pixel Sorting</option>
+          <option value="strong channel-shift chromatic aberration">Chromatic Shift</option>
+          <option value="gentle datamosh shimmer with soft RGB split">Soft Shimmer</option>
+        </select>
+      </div>
+      <div class="mixer-group">
+        <label>Lighting</label>
+        <select id="lighting">
+          <option value="ethereal lunarpunk bioluminescent moonlight creating soft halo">Soft Moonlight Halo</option>
+          <option value="dramatic lunarpunk moonlight from behind with rim lighting">Dramatic Backlight</option>
+          <option value="diffuse silver-blue glow with floating particle dust">Diffuse Silver Glow</option>
+          <option value="sharp contrast moonlight with deep indigo shadows">Sharp Contrast</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="output-area">
+      <h3>Generated Prompt</h3>
+      <button class="copy-btn" onclick="copyPrompt()">Copy</button>
+      <div id="promptOutput"></div>
+      <div class="params">
+        <label><input type="checkbox" id="includeParams" checked> Include --ar 3:4 --stylize 250</label>
+        <label><input type="checkbox" id="includeNegative"> Include negative prompt</label>
+      </div>
+    </div>
+
+    <div class="history" id="historyArea" style="display:none">
+      <h3>Session History</h3>
+      <div id="historyList"></div>
+    </div>
+  </div>
+
+  <script>
+    const options = {
+      mood: ["Luminous wonder","Melancholic reverie","Defiant rebellion","Sacred-profane tension","Nocturnal mystery","Primordial chaos","Ethereal grace"],
+      pose: ["standing powerfully","floating gently","kneeling gracefully","leaping defiantly","dancing slowly","sitting quietly","reaching upward","arms outstretched"],
+      collage: ["sliced newspaper clippings and vintage photo cutouts","layered Japanese newsprint and black-and-white portraits","torn financial headlines and botanical illustrations","aged obituary text and scientific journal fragments"],
+      repair: ["iridescent stained-glass mosaic shards and obsidian repaired by glowing golden kintsugi veins","sharp obsidian fragments with thick bold golden kintsugi","delicate hairline kintsugi on fractured porcelain-white skin","web-pattern kintsugi across shattered mosaic"],
+      botanicals: ["lush regenerative moonflowers and iridescent ivy","thorned shadow roses and bioluminescent vines","star ferns and lunar orchids cascading","night jasmine and obsidian lilies","evening primrose and silver artemisia","wild angel's trumpet and glowing mushrooms"],
+      tactility: ["extreme heavy visible embroidery with raised thread patterns and clustered pearl beading","dense sashiko stitching in Kikkō pattern with yarn tufting","intricate Yabane arrow-feather stitching with crystal clusters","heavy chain stitch vines with matte glass bead clusters"],
+      glitch: ["subtle datamosh glitch distortion melting collage edges","controlled pixel sorting on sleeve and hem transitions","strong channel-shift chromatic aberration","gentle datamosh shimmer with soft RGB split"],
+      lighting: ["ethereal lunarpunk bioluminescent moonlight creating soft halo","dramatic lunarpunk moonlight from behind with rim lighting","diffuse silver-blue glow with floating particle dust","sharp contrast moonlight with deep indigo shadows"]
+    };
+
+    const negativePrompt = "blurry, lowres, deformed, ugly, extra limbs, bad anatomy, watermark, text, logo, oversaturated, flat lighting, minimalism, plastic skin, cartoon, 3d render, smooth surfaces, no texture, no embroidery, no beading, no watercolor bleed, no stained glass, no kintsugi, no botanical growth, no datamosh, no lunarpunk glow";
+
+    function generatePrompt() {
+      const mood = document.getElementById('mood').value;
+      const pose = document.getElementById('pose').value;
+      const collage = document.getElementById('collage').value;
+      const repair = document.getElementById('repair').value;
+      const botanicals = document.getElementById('botanicals').value;
+      const tactility = document.getElementById('tactility').value;
+      const glitch = document.getElementById('glitch').value;
+      const lighting = document.getElementById('lighting').value;
+      const includeParams = document.getElementById('includeParams').checked;
+      const includeNegative = document.getElementById('includeNegative').checked;
+
+      let prompt = `${mood} lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk full-body female ${pose}, body meticulously constructed from ${collage} with vibrant watercolor bleed painted directly over the collage, defiant folklore reassembly using ${repair}, ${botanicals} blooming from cracks and fractures, ${tactility} for hyper-sensory tactile depth, ${glitch}, ${lighting}, vibrant jewel tones vs crisp black and white inking, chromatic aberration fringing, regenerative sensory wonder, ultra-detailed mixed-media collage masterpiece`;
+
+      if (includeParams) {
+        prompt += " --ar 3:4 --stylize 250 --v 6";
+      }
+      if (includeNegative) {
+        prompt += "\n\nNegative: " + negativePrompt;
+      }
+
+      document.getElementById('promptOutput').textContent = prompt;
+      addToHistory(prompt);
+    }
+
+    function randomizeAll() {
+      Object.keys(options).forEach(key => {
+        const select = document.getElementById(key);
+        const opts = options[key];
+        select.value = opts[Math.floor(Math.random() * opts.length)];
+      });
+      generatePrompt();
+    }
+
+    function copyPrompt() {
+      const text = document.getElementById('promptOutput').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+
+    let history = [];
+    function addToHistory(prompt) {
+      history.unshift(prompt.substring(0, 120) + '...');
+      if (history.length > 10) history.pop();
+      const list = document.getElementById('historyList');
+      const area = document.getElementById('historyArea');
+      list.innerHTML = history.map((h, i) => `<div class="history-item" onclick="restoreHistory(${i})">${h}</div>`).join('');
+      area.style.display = history.length ? 'block' : 'none';
+    }
+
+    function restoreHistory(index) {
+      // Just a visual feedback — full restore would need storing full prompts
+    }
+
+    // Auto-generate on change
+    document.querySelectorAll('select').forEach(sel => {
+      sel.addEventListener('change', generatePrompt);
+    });
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', generatePrompt);
+    });
+
+    // Initial generation
+    randomizeAll();
+  </script>
+</body>
+</html>
