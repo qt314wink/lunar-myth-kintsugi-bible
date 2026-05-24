@@ -1,0 +1,143 @@
+{
+  "last_node_id": 15,
+  "last_link_id": 20,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [100, 100],
+      "size": [320, 100],
+      "inputs": [],
+      "outputs": [["MODEL", 0], ["CLIP", 0], ["VAE", 0]],
+      "widgets_values": ["sdxl-base.safetensors"]
+    },
+    {
+      "id": 2,
+      "type": "CLIPTextEncode",
+      "pos": [100, 250],
+      "size": [320, 120],
+      "inputs": [["CLIP", 0]],
+      "outputs": [["CONDITIONING", 0]],
+      "widgets_values": ["lunar myth kintsugi botanist full-body female primordial goddess, luminous wonder mood, newspaper collage with watercolor bleed, stained-glass mosaic and obsidian with golden kintsugi, regenerative moonflowers and iridescent ivy, heavy embroidery and beading, datamosh glitch, lunarpunk moonlight, vibrant jewel tones, chromatic aberration"]
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [100, 400],
+      "size": [320, 120],
+      "inputs": [["CLIP", 0]],
+      "outputs": [["CONDITIONING", 0]],
+      "widgets_values": ["blurry, lowres, deformed, ugly, extra limbs, bad anatomy, watermark, text, logo, oversaturated, flat, minimalism, plastic skin, cartoon, smooth, no texture, no embroidery, no beading, no watercolor bleed, no stained glass, no kintsugi, no botanical growth, no datamosh, no lunarpunk glow"]
+    },
+    {
+      "id": 4,
+      "type": "EmptyLatentImage",
+      "pos": [100, 550],
+      "size": [320, 100],
+      "inputs": [],
+      "outputs": [["LATENT", 0]],
+      "widgets_values": [832, 1216, 1]
+    },
+    {
+      "id": 5,
+      "type": "KSampler",
+      "pos": [500, 250],
+      "size": [320, 280],
+      "inputs": [["MODEL", 0], ["POSITIVE", 0], ["NEGATIVE", 0], ["LATENT", 0]],
+      "outputs": [["LATENT", 0]],
+      "widgets_values": [12345, "randomize", 30, 7.5, "dpmpp_2m", "karras", 1]
+    },
+    {
+      "id": 6,
+      "type": "VAEDecode",
+      "pos": [900, 250],
+      "size": [220, 60],
+      "inputs": [["SAMPLES", 0], ["VAE", 0]],
+      "outputs": [["IMAGE", 0]]
+    },
+    {
+      "id": 7,
+      "type": "SaveImage",
+      "pos": [1200, 250],
+      "size": [320, 280],
+      "inputs": [["IMAGES", 0]],
+      "widgets_values": ["LunarMyth_Output"]
+    },
+    {
+      "id": 8,
+      "type": "LoadImage",
+      "pos": [100, 700],
+      "size": [320, 320],
+      "inputs": [],
+      "outputs": [["IMAGE", 0], ["MASK", 0]],
+      "widgets_values": ["reference_style.png", "image"]
+    },
+    {
+      "id": 9,
+      "type": "IPAdapterModelLoader",
+      "pos": [500, 700],
+      "size": [320, 80],
+      "inputs": [],
+      "outputs": [["IPADAPTER", 0]],
+      "widgets_values": ["ip-adapter-plus_sdxl_vit-h.safetensors"]
+    },
+    {
+      "id": 10,
+      "type": "IPAdapterApply",
+      "pos": [500, 820],
+      "size": [320, 120],
+      "inputs": [["IPADAPTER", 0], ["MODEL", 0], ["IMAGE", 0]],
+      "outputs": [["MODEL", 0]],
+      "widgets_values": [0.75, "STYLE", 0]
+    },
+    {
+      "id": 11,
+      "type": "ControlNetLoader",
+      "pos": [100, 1050],
+      "size": [320, 80],
+      "inputs": [],
+      "outputs": [["CONTROL_NET", 0]],
+      "widgets_values": ["control_v11p_sd15_canny.pth"]
+    },
+    {
+      "id": 12,
+      "type": "CannyEdgePreprocessor",
+      "pos": [500, 1050],
+      "size": [320, 100],
+      "inputs": [["IMAGE", 0]],
+      "outputs": [["IMAGE", 0]],
+      "widgets_values": [100, 200]
+    },
+    {
+      "id": 13,
+      "type": "ControlNetApply",
+      "pos": [900, 1050],
+      "size": [320, 120],
+      "inputs": [["CONDITIONING", 0], ["CONTROL_NET", 0], ["IMAGE", 0]],
+      "outputs": [["CONDITIONING", 0]],
+      "widgets_values": [0.7]
+    }
+  ],
+  "links": [
+    [1, 0, 2, 0, "CLIP"],
+    [1, 0, 3, 0, "CLIP"],
+    [1, 0, 10, 1, "MODEL"],
+    [1, 2, 6, 1, "VAE"],
+    [2, 0, 13, 0, "CONDITIONING"],
+    [3, 0, 5, 2, "NEGATIVE"],
+    [4, 0, 5, 3, "LATENT"],
+    [5, 0, 6, 0, "LATENT"],
+    [6, 0, 7, 0, "IMAGE"],
+    [8, 0, 12, 0, "IMAGE"],
+    [9, 0, 10, 0, "IPADAPTER"],
+    [10, 0, 5, 0, "MODEL"],
+    [11, 0, 13, 1, "CONTROL_NET"],
+    [12, 0, 13, 2, "IMAGE"],
+    [13, 0, 5, 1, "POSITIVE"]
+  ],
+  "groups": [
+    {"title": "Base Generation", "bounding": [80, 80, 600, 500]},
+    {"title": "IP-Adapter Style Transfer", "bounding": [80, 680, 800, 300]},
+    {"title": "ControlNet Structure", "bounding": [80, 1030, 1200, 200]}
+  ]
+}

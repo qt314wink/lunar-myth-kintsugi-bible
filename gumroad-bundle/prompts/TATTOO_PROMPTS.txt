@@ -1,0 +1,48 @@
+# TATTOO FLASH PROMPTS
+# Count: 15
+
+[1]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female full sleeve, torn blueprint sections and astronomical chart pieces style with watercolor bleed, sharp obsidian fragments with thick bold golden kintsugi, lush regenerative moonflowers and iridescent ivy, bold black and white with vibrant teal highlights, subtle datamosh glitch distortion melting collage edges, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+
+[2]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female back piece, aged obituary text and scientific journal fragments style with watercolor bleed, iridescent stained-glass mosaic shards and obsidian repaired by glowing golden kintsugi veins, evening primrose and silver artemisia catching moonlight, bold black and white with vibrant teal highlights, mosaic tile displacement creating shifting pattern illusions, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+
+[3]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female chest panel, vintage magazine clippings and handwritten letter pieces style with watercolor bleed, obsidian geode cracks sealed with luminescent kintsugi resin, moonflowers and star ferns blooming abundantly from golden kintsugi cracks, bold black and white with electric blue highlights, controlled pixel sorting on sleeve and hem transitions, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+
+[4]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female chest panel, torn financial headlines and botanical illustration fragments style with watercolor bleed, river-flow kintsugi connecting obsidian shards like golden arteries, thorned shadow roses and bioluminescent vines, bold black and white with gold highlights, controlled pixel sorting on sleeve and hem transitions, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+
+[5]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female chest panel, aged obituary text and scientific journal fragments style with watercolor bleed, delicate hairline kintsugi on fractured porcelain-white skin, thorned shadow roses and bioluminescent vines bursting through obsidian, bold black and white with gold highlights, mosaic tile displacement creating shifting pattern illusions, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+
+[6]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female chest panel, layered Japanese newsprint and black-and-white portrait fragments style with watercolor bleed, river-flow kintsugi connecting obsidian shards like golden arteries, star ferns and glowing moonflowers weaving through stained-glass shards, bold black and white with electric blue highlights, gentle datamosh shimmer with soft RGB split, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+
+[7]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female upper body, aged obituary text and scientific journal fragments style with watercolor bleed, sharp obsidian fragments with thick bold golden kintsugi, evening primrose and silver artemisia catching moonlight, bold black and white with electric blue highlights, controlled pixel sorting on sleeve and hem transitions, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+
+[8]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female thigh piece, sliced newspaper clippings and vintage photo cutouts style with watercolor bleed, river-flow kintsugi connecting obsidian shards like golden arteries, lunar orchids and white lotus contrasting with thorned shadow roses, bold black and white with magenta highlights, controlled pixel sorting on sleeve and hem transitions, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+
+[9]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female upper body, torn financial headlines and botanical illustration fragments style with watercolor bleed, iridescent stained-glass mosaic shards and obsidian repaired by glowing golden kintsugi veins, star ferns and lunar orchids cascading, bold black and white with electric blue highlights, scan-line interference rippling through watercolor layers, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+
+[10]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female chest panel, vintage magazine clippings and handwritten letter pieces style with watercolor bleed, delicate hairline kintsugi on fractured porcelain-white skin, wild angel's trumpet and glowing mushrooms, bold black and white with magenta highlights, digital corruption blooming like frost across obsidian surfaces, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+
+[11]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female upper body, sliced newspaper clippings and vintage photo cutouts style with watercolor bleed, stained-glass cathedral fragments repaired with molten gold, bioluminescent vines and thorned shadow roses erupting chaotically, bold black and white with electric blue highlights, digital corruption blooming like frost across obsidian surfaces, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+
+[12]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female chest panel, layered Japanese newsprint and black-and-white portrait fragments style with watercolor bleed, river-flow kintsugi connecting obsidian shards like golden arteries, star ferns and glowing moonflowers weaving through stained-glass shards, bold black and white with vibrant teal highlights, temporal ghosting leaving trails of previous poses, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+
+[13]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female thigh piece, layered book pages and cartographic fragments style with watercolor bleed, iridescent stained-glass mosaic shards and obsidian repaired by glowing golden kintsugi veins, iridescent ivy and lunar orchids cascading down her body, bold black and white with magenta highlights, scan-line interference rippling through watercolor layers, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+
+[14]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female full sleeve, vintage magazine clippings and handwritten letter pieces style with watercolor bleed, sharp obsidian fragments with thick bold golden kintsugi, evening primrose and silver artemisia catching moonlight, bold black and white with vibrant teal highlights, gentle datamosh shimmer with soft RGB split, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+
+[15]
+Vertical tattoo flash design of lunarpunk tactile-stained-mosaic kintsugi botanist mythpunk female chest panel, sliced newspaper clippings and vintage photo cutouts style with watercolor bleed, iridescent stained-glass mosaic shards and obsidian repaired by glowing golden kintsugi veins, iridescent ivy and lunar orchids flowing gracefully, bold black and white with vibrant teal highlights, gentle datamosh shimmer with soft RGB split, clean linework, tattoo flash sheet composition --ar 2:3 --stylize 250 --v 6
+

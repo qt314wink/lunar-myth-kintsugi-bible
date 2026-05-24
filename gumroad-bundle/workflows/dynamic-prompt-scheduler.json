@@ -1,0 +1,93 @@
+{
+  "last_node_id": 25,
+  "last_link_id": 40,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [100, 100],
+      "size": [320, 100],
+      "inputs": [],
+      "outputs": [["MODEL", 0], ["CLIP", 0], ["VAE", 0]],
+      "widgets_values": ["sdxl-base.safetensors"]
+    },
+    {
+      "id": 2,
+      "type": "CR_PromptScheduler",
+      "pos": [100, 250],
+      "size": [400, 200],
+      "inputs": [],
+      "outputs": [["SCHEDULE", 0], ["CURRENT_PROMPT", 0]],
+      "widgets_values": [
+        "schedule",
+        "0: \"lunar myth kintsugi botanist full-body female, sparse botanicals, faint kintsugi lines\"\n10: \"lunar myth kintsugi botanist full-body female, growing botanicals, glowing kintsugi lines\"\n20: \"lunar myth kintsugi botanist full-body female, lush botanical overgrowth, bright golden kintsugi\"\n30: \"lunar myth kintsugi botanist full-body female, dense regenerative garden, radiant kintsugi veins\""
+      ]
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [600, 250],
+      "size": [320, 120],
+      "inputs": [["CLIP", 0], ["TEXT", 0]],
+      "outputs": [["CONDITIONING", 0]],
+      "widgets_values": [""]
+    },
+    {
+      "id": 4,
+      "type": "CLIPTextEncode",
+      "pos": [100, 500],
+      "size": [320, 120],
+      "inputs": [["CLIP", 0]],
+      "outputs": [["CONDITIONING", 0]],
+      "widgets_values": ["blurry, deformed, ugly, bad anatomy, watermark, text, logo, lowres"]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [100, 650],
+      "size": [320, 100],
+      "inputs": [],
+      "outputs": [["LATENT", 0]],
+      "widgets_values": [832, 1216, 1]
+    },
+    {
+      "id": 6,
+      "type": "KSampler",
+      "pos": [600, 450],
+      "size": [320, 280],
+      "inputs": [["MODEL", 0], ["POSITIVE", 0], ["NEGATIVE", 0], ["LATENT", 0]],
+      "outputs": [["LATENT", 0]],
+      "widgets_values": [12345, "randomize", 30, 7.5, "dpmpp_2m", "karras", 1]
+    },
+    {
+      "id": 7,
+      "type": "VAEDecode",
+      "pos": [1000, 450],
+      "size": [220, 60],
+      "inputs": [["SAMPLES", 0], ["VAE", 0]],
+      "outputs": [["IMAGE", 0]]
+    },
+    {
+      "id": 8,
+      "type": "SaveImage",
+      "pos": [1300, 450],
+      "size": [320, 280],
+      "inputs": [["IMAGES", 0]],
+      "widgets_values": ["LunarMyth_Scheduled"]
+    }
+  ],
+  "links": [
+    [1, 0, 3, 0, "CLIP"],
+    [1, 0, 4, 0, "CLIP"],
+    [1, 2, 7, 1, "VAE"],
+    [2, 1, 3, 1, "TEXT"],
+    [3, 0, 6, 1, "POSITIVE"],
+    [4, 0, 6, 2, "NEGATIVE"],
+    [5, 0, 6, 3, "LATENT"],
+    [6, 0, 7, 0, "LATENT"],
+    [7, 0, 8, 0, "IMAGE"]
+  ],
+  "groups": [
+    {"title": "Dynamic Prompt Scheduling", "bounding": [80, 80, 1600, 700]}
+  ]
+}

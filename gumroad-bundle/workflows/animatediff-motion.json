@@ -1,0 +1,101 @@
+{
+  "last_node_id": 20,
+  "last_link_id": 30,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [100, 100],
+      "size": [320, 100],
+      "inputs": [],
+      "outputs": [["MODEL", 0], ["CLIP", 0], ["VAE", 0]],
+      "widgets_values": ["sdxl-base.safetensors"]
+    },
+    {
+      "id": 2,
+      "type": "CLIPTextEncode",
+      "pos": [100, 250],
+      "size": [320, 120],
+      "inputs": [["CLIP", 0]],
+      "outputs": [["CONDITIONING", 0]],
+      "widgets_values": ["lunar myth kintsugi botanist full-body female, regenerative botanical growth, moonflowers blooming, kintsugi lines glowing, time-lapse transformation, luminescent wonder"]
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [100, 400],
+      "size": [320, 120],
+      "inputs": [["CLIP", 0]],
+      "outputs": [["CONDITIONING", 0]],
+      "widgets_values": ["blurry, deformed, ugly, bad anatomy, watermark, text, logo, lowres"]
+    },
+    {
+      "id": 4,
+      "type": "AnimateDiffLoaderV2",
+      "pos": [500, 100],
+      "size": [320, 100],
+      "inputs": [["MODEL", 0]],
+      "outputs": [["MODEL", 0]],
+      "widgets_values": ["mm_sdxl_v10_beta.safetensors", 0.7]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [100, 550],
+      "size": [320, 100],
+      "inputs": [],
+      "outputs": [["LATENT", 0]],
+      "widgets_values": [512, 768, 16]
+    },
+    {
+      "id": 6,
+      "type": "KSampler",
+      "pos": [500, 300],
+      "size": [320, 280],
+      "inputs": [["MODEL", 0], ["POSITIVE", 0], ["NEGATIVE", 0], ["LATENT", 0]],
+      "outputs": [["LATENT", 0]],
+      "widgets_values": [12345, "randomize", 25, 7.0, "dpmpp_2m", "karras", 1]
+    },
+    {
+      "id": 7,
+      "type": "VAEDecode",
+      "pos": [900, 300],
+      "size": [220, 60],
+      "inputs": [["SAMPLES", 0], ["VAE", 0]],
+      "outputs": [["IMAGE", 0]]
+    },
+    {
+      "id": 8,
+      "type": "SaveImage",
+      "pos": [1200, 300],
+      "size": [320, 280],
+      "inputs": [["IMAGES", 0]],
+      "widgets_values": ["LunarMyth_AnimateDiff"]
+    },
+    {
+      "id": 9,
+      "type": "LoraLoaderModelOnly",
+      "pos": [900, 100],
+      "size": [320, 80],
+      "inputs": [["MODEL", 0]],
+      "outputs": [["MODEL", 0]],
+      "widgets_values": ["lunar_myth_kintsugi_botanist_v1.safetensors", 0.75]
+    }
+  ],
+  "links": [
+    [1, 0, 2, 0, "CLIP"],
+    [1, 0, 3, 0, "CLIP"],
+    [1, 0, 4, 0, "MODEL"],
+    [1, 2, 7, 1, "VAE"],
+    [2, 0, 6, 1, "POSITIVE"],
+    [3, 0, 6, 2, "NEGATIVE"],
+    [4, 0, 9, 0, "MODEL"],
+    [5, 0, 6, 3, "LATENT"],
+    [6, 0, 7, 0, "LATENT"],
+    [7, 0, 8, 0, "IMAGE"],
+    [9, 0, 6, 0, "MODEL"]
+  ],
+  "groups": [
+    {"title": "AnimateDiff Motion Generation", "bounding": [80, 80, 1500, 550]}
+  ]
+}

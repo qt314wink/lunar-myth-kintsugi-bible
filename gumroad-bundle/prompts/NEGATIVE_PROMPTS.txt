@@ -1,0 +1,14 @@
+# MASTER NEGATIVE PROMPT
+# Use with every generation
+
+blurry, lowres, deformed, ugly, extra limbs, bad anatomy, watermark, text, logo, oversaturated, flat lighting, minimalism, plastic skin, cartoon, 3d render, smooth surfaces, no texture, no embroidery, no beading, no watercolor bleed, no stained glass, no kintsugi gold, no botanical growth, no datamosh, no lunarpunk glow, modern clean design, photorealistic skin, doll-like, low detail, dull colors, seamless digital look, no torn paper edges, no visible newspaper text, overexposed, underexposed, bad composition
+
+# MOOD-SPECIFIC NEGATIVES
+
+Luminous Wonder: dark, creepy, horror, heavy shadows, gloomy
+Defiant Rebellion: weak pose, passive, defeated, timid, sad
+Melancholic Reverie: bright daylight, overly cheerful, cartoonish
+Primordial Chaos: organized, clean, symmetrical, static, minimal
+Nocturnal Mystery: bright daylight, overexposed, cheerful
+Ethereal Grace: chaotic, aggressive, dark, heavy
+Sacred-Profane: plain, simple, minimal, modern
