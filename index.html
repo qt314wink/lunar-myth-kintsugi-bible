@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunar Myth Kintsugi Bible — 357+ Hyper-Tactile Mythpunk Prompts</title>
+  <meta name="description" content="The complete creative system for luminous, rebelliously tactile full-body primordial goddesses. By Jennipher Troup.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #FFD700;
+      --gold-dark: #B8941F;
+      --obsidian: #0a0a0a;
+      --obsidian-light: #1a1a1a;
+      --teal: #20B2AA;
+      --teal-dark: #156e6a;
+      --magenta: #C71585;
+      --indigo: #191970;
+      --cream: #F5F5DC;
+      --text-main: #e8e4dc;
+      --text-dim: #a09888;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'EB Garamond', 'Crimson Text', Georgia, serif;
+      background: var(--obsidian);
+      color: var(--text-main);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Kintsugi crack decoration */
+    .kintsugi-line {
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 20%, var(--gold-light) 50%, var(--gold) 80%, transparent 100%);
+      margin: 3rem auto;
+      max-width: 600px;
+      position: relative;
+    }
+    .kintsugi-line::before, .kintsugi-line::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--gold-light), 0 0 24px var(--gold);
+    }
+    .kintsugi-line::before { left: 20%; }
+    .kintsugi-line::after { right: 20%; }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+      padding: 0.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+    .logo span { color: var(--text-dim); font-size: 0.75rem; display: block; letter-spacing: 4px; }
+    nav a {
+      color: var(--text-dim);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: var(--gold); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--obsidian) !important;
+      padding: 0.4rem 1.2rem;
+      border-radius: 2px;
+      font-weight: 600;
+    }
+    .nav-cta:hover { background: linear-gradient(135deg, var(--gold), var(--gold-light)); }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(212,175,55,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(32,178,170,0.06) 0%, transparent 50%),
+        var(--obsidian);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .hero-badge {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      color: var(--gold);
+      border: 1px solid rgba(212,175,55,0.3);
+      padding: 0.4rem 1.2rem;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.2rem, 6vw, 4.5rem);
+      line-height: 1.15;
+      max-width: 900px;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--text-dim);
+      max-width: 700px;
+      margin-bottom: 2.5rem;
+      font-style: italic;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      font-family: 'Cinzel Decorative', serif;
+      padding: 1rem 2.5rem;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--obsidian);
+      box-shadow: 0 4px 20px rgba(212,175,55,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(212,175,55,0.5);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+    .btn-secondary:hover {
+      background: rgba(212,175,55,0.1);
+    }
+    .hero-subnote {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    /* Sections */
+    section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-dim);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .feature-card {
+      background: linear-gradient(145deg, rgba(26,26,26,0.9), rgba(10,10,10,0.95));
+      border: 1px solid rgba(212,175,55,0.1);
+      padding: 2rem;
+      border-radius: 4px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-card:hover {
+      border-color: rgba(212,175,55,0.25);
+      transform: translateY(-4px);
+    }
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .feature-card h3 {
+      font-family: 'Cinzel Decorative', serif;
+      color: var(--gold-light);
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+    .feature-card p { color: var(--text-dim); font-size: 0.95rem; }
+
+    /* Style DNA */
+    .style-dna {
+      background: linear-gradient(180deg, var(--obsidian), rgba(25,25,112,0.15), var(--obsidian));
+    }
+    .dna-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .dna-item {
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .dna-number {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      opacity: 0.4;
+      line-height: 1;
+    }
+    .dna-item h4 {
+      font-family: 'Cinzel Decorative', serif;
+      color: var(--cream);
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+    .dna-item p { color: var(--text-dim); font-size: 0.9rem; }
+
+    /* Tiers */
+    .tiers {
+      background: var(--obsidian);
+    }
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+    .tier-card {
+      background: linear-gradient(180deg, rgba(26,26,26,0.95), rgba(10,10,10,0.98));
+      border: 1px solid rgba(212,175,55,0.12);
+      border-radius: 6px;
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .tier-card.featured {
+      border-color: rgba(212,175,55,0.4);
+      box-shadow: 0 0 40px rgba(212,175,55,0.08);
+      transform: scale(1.03);
+    }
+    .tier-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--obsidian);
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      padding: 0.3rem 1rem;
+      border-radius: 2px;
+    }
+    .tier-card:hover {
+      border-color: rgba(212,175,55,0.3);
+    }
+    .tier-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+    .tier-price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+    .tier-price span {
+      font-size: 1rem;
+      color: var(--text-dim);
+      font-weight: 400;
+    }
+    .tier-desc {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+    }
+    .tier-features { list-style: none; margin-bottom: 2rem; }
+    .tier-features li {
+      padding: 0.5rem 0;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .tier-features li::before {
+      content: '✦';
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .tier-features li.muted { color: var(--text-dim); }
+    .tier-features li.muted::before { content: '○'; color: var(--text-dim); opacity: 0.5; }
+    .tier-btn {
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .testimonial {
+      background: rgba(26,26,26,0.6);
+      border-left: 3px solid var(--gold);
+      padding: 2rem;
+      font-style: italic;
+      position: relative;
+    }
+    .testimonial::before {
+      content: '"';
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 4rem;
+      color: var(--gold);
+      opacity: 0.2;
+      position: absolute;
+      top: 0.5rem;
+      left: 1rem;
+      line-height: 1;
+    }
+    .testimonial p { position: relative; z-index: 1; margin-bottom: 1rem; }
+    .testimonial-author {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--gold-light);
+      font-size: 0.9rem;
+    }
+    .testimonial-role {
+      font-style: normal;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+    }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+      padding: 1.5rem 0;
+    }
+    .faq-question {
+      font-family: 'Cinzel Decorative', serif;
+      color: var(--cream);
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-question:hover { color: var(--gold); }
+    .faq-answer {
+      color: var(--text-dim);
+      margin-top: 0.75rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-toggle { color: var(--gold); transition: transform 0.3s; }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+    /* CTA Section */
+    .final-cta {
+      text-align: center;
+      padding: 6rem 2rem;
+      background:
+        radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 60%),
+        var(--obsidian);
+      border-top: 1px solid rgba(212,175,55,0.1);
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+    }
+    .final-cta h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .final-cta p {
+      color: var(--text-dim);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+    }
+    .guarantee {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+    .guarantee strong { color: var(--gold); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(212,175,55,0.08);
+    }
+    footer .logo { margin-bottom: 1rem; display: inline-block; }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* Canvas background */
+    #crackCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.15;
+    }
+
+    .content-wrap { position: relative; z-index: 1; }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      header { padding: 0.5rem 1rem; }
+      nav { display: none; }
+      .hero { padding: 6rem 1.5rem 3rem; }
+      section { padding: 3rem 1.5rem; }
+      .tier-card.featured { transform: scale(1); }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in {
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="crackCanvas"></canvas>
+
+  <div class="content-wrap">
+    <header>
+      <div class="logo">
+        LUNAR MYTH
+        <span>KINTSUGI BIBLE</span>
+      </div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#style">Style</a>
+        <a href="#tiers">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#tiers" class="nav-cta">Get Access</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-badge">By Jennipher Troup</div>
+      <h1>LUNAR MYTH KINTSUGI BIBLE</h1>
+      <p class="hero-tagline">
+        357+ hyper-tactile mythpunk prompts & a complete collage system.
+        Create luminous, rebelliously tactile full-body primordial goddesses
+        that stop scrollers in their tracks.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#tiers" class="btn btn-primary">Choose Your Tier</a>
+        <a href="#features" class="btn btn-secondary">Explore Inside</a>
+      </div>
+      <p class="hero-subnote">Break. Repair. Glow. Repeat.</p>
+    </section>
+
+    <div class="kintsugi-line"></div>
+
+    <section id="features">
+      <h2 class="section-title">What You Receive</h2>
+      <p class="section-subtitle">
+        This is not a basic prompt pack. It is a complete professional creative system
+        refined over 18 months of deep experimentation across mythpunk, lunarpunk,
+        kintsugi philosophy, and tactile mixed-media collage.
+      </p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">📜</span>
+          <h3>357+ Ready-to-Copy Prompts</h3>
+          <p>Carefully crafted and optimized for Grok Imagine, Midjourney, Flux, and Leonardo. Organized by 7 signature moods, fashion variants, and tattoo-friendly compositions.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">📖</span>
+          <h3>58+ Page Comprehensive Bible</h3>
+          <p>In-depth philosophy, exact layering recipes, material hierarchy, botanical symbolism, sashiko stitch patterns, kintsugi resin techniques, and lunarpunk fashion design.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🎨</span>
+          <h3>85 High-Resolution Textures</h3>
+          <p>Scanned newspaper clippings, stained-glass shards, obsidian textures, kintsugi gold overlays, embroidery & beading elements, and botanical cutouts.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🧩</span>
+          <h3>10 Smart-Object PSD Templates</h3>
+          <p>Pre-built collage canvases with smart objects. Full Body Hero, Close-Up Portrait, Dynamic Pose, Fashion Editorial, Mosaic Armor, and more.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">⚙️</span>
+          <h3>Advanced ComfyUI Workflows</h3>
+          <p>IP-Adapter + multi-ControlNet integration, AnimateDiff animation support, Flux.1 dev compatibility, and dynamic prompt scheduling JSONs.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🧠</span>
+          <h3>LoRA Training Masterclass</h3>
+          <p>Complete Kohya SS Colab notebook with Prodigy optimizer. Dataset curation, parameter tuning, multi-LoRA stacking, and troubleshooting guides.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="kintsugi-line"></div>
+
+    <section id="style" class="style-dna">
+      <h2 class="section-title">The 8 Essential Ingredients</h2>
+      <p class="section-subtitle">
+        Every piece in the Lunar Myth style is built from these core elements,
+        layered in a specific order that creates depth, tactility, and emotional resonance.
+      </p>
+      <div class="dna-grid">
+        <div class="dna-item">
+          <div class="dna-number">01</div>
+          <h4>Newspaper & Photo Collage</h4>
+          <p>The skeleton. Torn clippings, vintage headlines, and photo slices form the figure's foundation.</p>
+        </div>
+        <div class="dna-item">
+          <div class="dna-number">02</div>
+          <h4>Watercolor Bleed</h4>
+          <p>The emotion. Soft jewel tones pool and flow across the paper layers, bringing life to the structure.</p>
+        </div>
+        <div class="dna-item">
+          <div class="dna-number">03</div>
+          <h4>Obsidian & Stained Glass</h4>
+          <p>The fracture. Sharp dark shards and iridescent mosaic represent the moment of breakage.</p>
+        </div>
+        <div class="dna-item">
+          <div class="dna-number">04</div>
+          <h4>Golden Kintsugi</h4>
+          <p>The repair. Visible gold lines transform fracture into beauty. Every crack is celebrated, not hidden.</p>
+        </div>
+        <div class="dna-item">
+          <div class="dna-number">05</div>
+          <h4>Regenerative Botanicals</h4>
+          <p>The growth. Moonflowers, iridescent ivy, and thorned shadow roses bloom from repair lines.</p>
+        </div>
+        <div class="dna-item">
+          <div class="dna-number">06</div>
+          <h4>Embroidery & Sashiko</h4>
+          <p>The tactility. Heavy beading, raised threadwork, and traditional Japanese stitch patterns create sensory depth.</p>
+        </div>
+        <div class="dna-item">
+          <div class="dna-number">07</div>
+          <h4>Datamosh Glitch</h4>
+          <p>The digital fracture. Controlled corruption adds modern impermanence to ancient craft.</p>
+        </div>
+        <div class="dna-item">
+          <div class="dna-number">08</div>
+          <h4>Lunarpunk Glow</h4>
+          <p>The atmosphere. Bioluminescent moonlight, chromatic aberration, and particle dust finish the piece.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="kintsugi-line"></div>
+
+    <section>
+      <h2 class="section-title">What Artists Are Saying</h2>
+      <p class="section-subtitle">Real creators using the Lunar Myth system to transform their work and their income.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <p>Jennipher Troup's Lunar Myth Kintsugi system completely transformed my workflow. My tattoo clients are obsessed with the tactile, luminous quality — I'm booking 3x more commissions.</p>
+          <div class="testimonial-author">Sarah K.</div>
+          <div class="testimonial-role">Professional Tattoo Artist</div>
+        </div>
+        <div class="testimonial">
+          <p>The layering recipes and prompt templates are gold. I went from generic outputs to gallery-worthy mythpunk pieces in days. The Full Moon tier paid for itself in one weekend of sales.</p>
+          <div class="testimonial-author">Marcus Rivera</div>
+          <div class="testimonial-role">Indie Comic Artist & Zine Maker</div>
+        </div>
+        <div class="testimonial">
+          <p>As a fashion illustrator, the embroidery and beading tactility plus the lunarpunk fashion techniques are unmatched. The Celestial tier's coaching call helped me land a runway print project.</p>
+          <div class="testimonial-author">Aisha Patel</div>
+          <div class="testimonial-role">Textile & Fashion Designer</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="kintsugi-line"></div>
+
+    <section id="tiers" class="tiers">
+      <h2 class="section-title">Choose Your Tier</h2>
+      <p class="section-subtitle">Three levels of access. Each tier builds on the last. Upgrade anytime.</p>
+      <div class="tiers-grid">
+        <div class="tier-card">
+          <div class="tier-name">🌱 Seed Tier</div>
+          <div class="tier-price">$37 <span>one-time</span></div>
+          <div class="tier-desc">The perfect entry point. Core prompts, foundational techniques, and immediate creative fuel.</div>
+          <ul class="tier-features">
+            <li>150+ Core Prompts</li>
+            <li>25-Page Core Bible</li>
+            <li>40 High-Res Textures</li>
+            <li>Basic Negative Prompts</li>
+            <li>Basic Hugging Face Guide</li>
+            <li>Commercial License</li>
+            <li class="muted">PSD Templates</li>
+            <li class="muted">ComfyUI Workflows</li>
+            <li class="muted">LoRA Training</li>
+            <li class="muted">Discord Community</li>
+          </ul>
+          <a href="#" class="btn btn-secondary tier-btn">Get Seed Tier</a>
+        </div>
+
+        <div class="tier-card featured">
+          <div class="tier-name">🌕 Full Moon Tier</div>
+          <div class="tier-price">$67 <span>one-time</span></div>
+          <div class="tier-desc">The complete professional toolkit. Everything you need to build a signature style and sell your work.</div>
+          <ul class="tier-features">
+            <li><strong>Everything in Seed +</strong></li>
+            <li>357+ Total Prompts</li>
+            <li>58+ Page Comprehensive Bible</li>
+            <li>85 High-Res Textures</li>
+            <li>5 Smart-Object PSD Templates</li>
+            <li>Advanced ComfyUI Workflows</li>
+            <li>Flux.1 + Hugging Face Guides</li>
+            <li>Negative Prompt Masterclass</li>
+            <li>Prompt Engineering Guide</li>
+            <li>Private Discord Community</li>
+          </ul>
+          <a href="#" class="btn btn-primary tier-btn">Get Full Moon Tier</a>
+        </div>
+
+        <div class="tier-card">
+          <div class="tier-name">🌟 Celestial Tier</div>
+          <div class="tier-price">$127 <span>one-time</span></div>
+          <div class="tier-desc">The ultimate professional bundle. Own the style completely with a custom LoRA and personal coaching.</div>
+          <ul class="tier-features">
+            <li><strong>Everything in Full Moon +</strong></li>
+            <li>Lifetime Updates</li>
+            <li>Custom Trained LoRA</li>
+            <li>Advanced Kohya SS Colab Notebook</li>
+            <li>10 Expanded PSD Templates</li>
+            <li>Raw Source Files</li>
+            <li>1:1 Coaching Call (30 min)</li>
+            <li>Priority Support</li>
+            <li>Video Tutorials (3)</li>
+            <li>Early Access to New Tools</li>
+          </ul>
+          <a href="#" class="btn btn-secondary tier-btn">Get Celestial Tier</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="kintsugi-line"></div>
+
+    <section id="faq">
+      <h2 class="section-title">Frequently Asked</h2>
+      <div class="faq-item">
+        <div class="faq-question">
+          What tools do I need to use the prompts?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          The prompts work with Grok Imagine, Midjourney, Flux, Leonardo, and any Stable Diffusion-based tool. For local generation, we include guides for Hugging Face Diffusers and ComfyUI.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          Can I really sell the art I create?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Yes. All tiers include a commercial license. You can sell prints, merch, NFTs, commissions, and client work. You cannot resell or redistribute the Bible files themselves.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          Do I need a powerful computer?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          No. The prompts work with cloud-based AI tools. For local generation and LoRA training (Celestial tier), we provide Google Colab notebooks that run on free cloud GPUs.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          What if I want to upgrade later?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          You can upgrade anytime. Pay only the difference between tiers. Seed to Full Moon is $30. Full Moon to Celestial is $60.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          Is there a refund policy?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Yes. 30-day money-back guarantee. If the Bible doesn't transform your art, email us for a full refund — no questions asked.
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <h2>Ready to Create Legendary Art?</h2>
+      <p>
+        Join hundreds of artists who have replaced generic output with a signature style
+        that is luminous, tactile, regenerative, and rebelliously beautiful.
+      </p>
+      <a href="#tiers" class="btn btn-primary">Choose Your Tier</a>
+      <p class="guarantee">
+        <strong>30-day money-back guarantee.</strong> Private Discord community for all buyers.<br>
+        Break. Repair. Glow. Repeat.
+      </p>
+    </section>
+
+    <footer>
+      <div class="logo">
+        LUNAR MYTH
+        <span>KINTSUGI BIBLE</span>
+      </div>
+      <p>Created with passion by <strong>Jennipher Troup</strong></p>
+      <p style="margin-top: 0.5rem;">
+        <a href="#">Contact</a> · <a href="#">Discord</a> · <a href="#">Instagram</a>
+      </p>
+      <p style="margin-top: 1rem; opacity: 0.5;">© 2026 Jennipher Troup. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Kintsugi crack canvas animation
+    const canvas = document.getElementById('crackCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const cracks = [];
+    const maxCracks = 6;
+
+    class Crack {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.angle = Math.random() * Math.PI * 2;
+        this.speed = 0.3 + Math.random() * 0.5;
+        this.life = 0;
+        this.maxLife = 200 + Math.random() * 300;
+        this.width = 0.5 + Math.random() * 1.5;
+        this.points = [{x: this.x, y: this.y}];
+        this.branches = [];
+        this.dead = false;
+      }
+      update() {
+        if (this.dead) return;
+        this.life++;
+        if (this.life > this.maxLife) {
+          this.dead = true;
+          return;
+        }
+        const last = this.points[this.points.length - 1];
+        this.angle += (Math.random() - 0.5) * 0.3;
+        const nx = last.x + Math.cos(this.angle) * this.speed;
+        const ny = last.y + Math.sin(this.angle) * this.speed;
+        this.points.push({x: nx, y: ny});
+
+        if (Math.random() < 0.02 && this.branches.length < 3) {
+          this.branches.push({
+            x: nx, y: ny,
+            angle: this.angle + (Math.random() - 0.5) * 1.5,
+            life: 0, maxLife: 50 + Math.random() * 100,
+            points: [{x: nx, y: ny}]
+          });
+        }
+
+        for (const b of this.branches) {
+          if (b.life >= b.maxLife) continue;
+          b.life++;
+          const bl = b.points[b.points.length - 1];
+          b.angle += (Math.random() - 0.5) * 0.4;
+          b.points.push({
+            x: bl.x + Math.cos(b.angle) * this.speed * 0.7,
+            y: bl.y + Math.sin(b.angle) * this.speed * 0.7
+          });
+        }
+      }
+      draw() {
+        if (this.points.length < 2) return;
+        const alpha = Math.min(1, this.life / 50) * Math.max(0, 1 - (this.life - this.maxLife * 0.7) / (this.maxLife * 0.3));
+        ctx.strokeStyle = `rgba(212, 175, 55, ${alpha * 0.4})`;
+        ctx.lineWidth = this.width;
+        ctx.beginPath();
+        ctx.moveTo(this.points[0].x, this.points[0].y);
+        for (let i = 1; i < this.points.length; i++) {
+          ctx.lineTo(this.points[i].x, this.points[i].y);
+        }
+        ctx.stroke();
+
+        for (const b of this.branches) {
+          if (b.points.length < 2) continue;
+          const ba = Math.min(1, b.life / 20) * Math.max(0, 1 - (b.life - b.maxLife * 0.6) / (b.maxLife * 0.4));
+          ctx.strokeStyle = `rgba(212, 175, 55, ${ba * 0.25})`;
+          ctx.lineWidth = this.width * 0.6;
+          ctx.beginPath();
+          ctx.moveTo(b.points[0].x, b.points[0].y);
+          for (let i = 1; i < b.points.length; i++) {
+            ctx.lineTo(b.points[i].x, b.points[i].y);
+          }
+          ctx.stroke();
+        }
+      }
+    }
+
+    for (let i = 0; i < maxCracks; i++) {
+      cracks.push(new Crack());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      for (const c of cracks) {
+        c.update();
+        c.draw();
+        if (c.dead && Math.random() < 0.005) {
+          c.reset();
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // FAQ toggle
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        q.parentElement.classList.toggle('open');
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.feature-card, .tier-card, .testimonial, .dna-item').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
