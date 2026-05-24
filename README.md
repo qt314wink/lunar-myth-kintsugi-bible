@@ -16,14 +16,15 @@ lunar-myth-kintsugi-bible/
 │   ├── 10-lora-training-guide.md          # Kohya SS + Prodigy + Colab
 │   └── 11-tier-license-commercial.md      # 3 tiers + license + selling guide
 ├── prompts/                           # (Add generated prompt files here)
-├── assets/                            # Supporting web tools
+├── assets/                            # Supporting web tools (MIT Licensed)
 │   ├── prompt-mixer.html              # Interactive prompt randomizer
 │   └── cover-generator.html           # Branded cover/thumbnail maker
-└── landing-page/                      # Live sales page
-    ├── index.html
-    ├── package.json
-    ├── vite.config.js
-    └── dist/                          # Built output
+├── index.html                         # Live sales page (Proprietary)
+├── package.json / vite.config.js
+├── dist/                              # Built output
+├── LICENSE                            # Dual license (MIT + Proprietary)
+├── COMMERCIAL_LICENSE.md              # Buyer-facing commercial license
+└── README.md
 ```
 
 ---
@@ -77,13 +78,31 @@ lunar-myth-kintsugi-bible/
 
 ---
 
-## 🛠️ Web Tools
+## 🛠️ Web Tools (MIT Licensed)
 
 ### Prompt Mixer
 Interactive tool with 8 dropdowns (Mood, Pose, Collage, Repair, Botanicals, Tactility, Glitch, Lighting). Randomize all or fine-tune each element. Auto-generates complete prompts with optional negative prompts and Midjourney parameters. Session history tracking.
 
 ### Cover Generator
 Canvas-based branded asset creator. 4 formats (book cover, social square, banner, story). 4 mood colorways (gold, teal, magenta, dark). Real-time editing. Download as PNG. Quick presets for common use cases.
+
+---
+
+## 📜 Dual License
+
+This repository uses a dual-license structure:
+
+| Component | License | What You Can Do |
+|-----------|---------|-----------------|
+| **Web Tools** (`assets/`) | **MIT** | Use, modify, fork, redistribute freely. Give credit if you feel like it. |
+| **Product Content** (`sections/`, `prompts/`) | **Proprietary** | Purchase via Gumroad for commercial use. See `COMMERCIAL_LICENSE.md`. |
+| **Landing Page** (`index.html`) | **Proprietary** | Brand asset. View for reference; do not reuse commercially. |
+
+### Why Dual-License?
+
+The **Prompt Mixer** and **Cover Generator** are open-sourced because they're community tools — we want artists to fork them, improve them, and share them. The actual product (the Bible content, prompts, methodology) is premium IP that funds ongoing development.
+
+See `LICENSE` for full legal text.
 
 ---
 

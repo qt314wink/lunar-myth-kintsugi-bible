@@ -1,28 +1,64 @@
-LUNAR MYTH KINTSUGI BIBLE — All Rights Reserved
+DUAL LICENSE — LUNAR MYTH KINTSUGI BIBLE
 Copyright (c) 2026 Jennipher Troup
 
-TERMS
+================================================================================
+PART A: MIT LICENSE — Web Tools (assets/)
+================================================================================
 
-1. This repository contains the source code for the Lunar Myth Kintsugi Bible
-   landing page and associated web tools (Prompt Mixer, Cover Generator).
+The following files and directories are licensed under the MIT License:
 
-2. All code, content, designs, text, and assets in this repository are the
-   exclusive property of Jennipher Troup and are protected by copyright law.
+  • assets/prompt-mixer.html
+  • assets/cover-generator.html
 
-3. You may view and fork this repository for personal reference only.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-4. You may NOT:
-   - Reuse, modify, or redistribute the landing page design commercially
-   - Resell or repackage any portion of this repository as your own product
-   - Use the code to create a competing prompt pack, toolkit, or course
-   - Remove or alter copyright notices
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-5. The product content (PDF sections, prompt libraries, texture assets, PSD
-   templates, LoRA files) is distributed separately via Gumroad and is governed
-   by the Commercial License provided to buyers.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
-6. For licensing inquiries, contact: jennipher@lunar-myth-kintsugi-bible.com
+If you modify and redistribute the tools, a link back to the original project
+is appreciated but not required.
 
-THIS SOFTWARE AND CONTENT ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+================================================================================
+PART B: ALL RIGHTS RESERVED — Product Content & Brand Assets
+================================================================================
+
+All other files and directories in this repository are proprietary and are
+NOT open source. This includes but is not limited to:
+
+  • sections/            (PDF content, methodology, written guides)
+  • prompts/             (prompt libraries and variations)
+  • index.html           (landing page design and sales copy)
+  • Any textures, templates, LoRA files, or training data
+
+These assets are the exclusive property of Jennipher Troup and are protected
+by copyright law. You may view this repository for reference, but you may NOT:
+
+  • Reuse, modify, or redistribute the landing page design commercially
+  • Resell or repackage any proprietary content as your own product
+  • Use the content to create a competing prompt pack, toolkit, or course
+  • Remove or alter copyright notices
+  • Mass-produce product content without significant transformative work
+
+The product content is distributed separately via Gumroad and is governed by
+the COMMERCIAL_LICENSE.md provided to buyers.
+
+================================================================================
+SUMMARY
+================================================================================
+
+Web Tools (assets/)        → MIT License     → Use freely, modify, share
+Product Content (sections/)  → Proprietary     → Purchase to use commercially
+Landing Page (index.html)    → Proprietary     → Brand asset, do not reuse
+
+For licensing inquiries: jennipher@lunar-myth-kintsugi-bible.com
 
 Break. Repair. Glow. Repeat.
