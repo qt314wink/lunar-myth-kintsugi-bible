@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunar Myth Cover Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #FFD700;
+      --obsidian: #0a0a0a;
+      --obsidian-light: #1a1a1a;
+      --teal: #20B2AA;
+      --cream: #F5F5DC;
+      --text-main: #e8e4dc;
+      --text-dim: #a09888;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: var(--obsidian);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    h1 {
+      font-family: 'Cinzel Decorative', serif;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--text-dim);
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .control-group {
+      background: var(--obsidian-light);
+      border: 1px solid rgba(212,175,55,0.15);
+      padding: 1rem;
+      border-radius: 4px;
+    }
+    .control-group label {
+      display: block;
+      font-family: 'Cinzel Decorative', serif;
+      color: var(--gold);
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+    .control-group input, .control-group select {
+      width: 100%;
+      background: var(--obsidian);
+      color: var(--text-main);
+      border: 1px solid rgba(212,175,55,0.2);
+      padding: 0.5rem;
+      font-family: 'EB Garamond', serif;
+      border-radius: 3px;
+    }
+    .canvas-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    canvas {
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 4px;
+      max-width: 100%;
+    }
+    .actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      font-family: 'Cinzel Decorative', serif;
+      padding: 0.75rem 2rem;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      border: none;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #B8941F, var(--gold));
+      color: var(--obsidian);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(212,175,55,0.3);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+    .presets {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .presets span {
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      margin-right: 0.5rem;
+    }
+    .preset-btn {
+      background: rgba(212,175,55,0.1);
+      color: var(--gold);
+      border: 1px solid rgba(212,175,55,0.2);
+      padding: 0.3rem 0.8rem;
+      margin: 0.25rem;
+      font-family: 'EB Garamond', serif;
+      font-size: 0.8rem;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+    .preset-btn:hover {
+      background: rgba(212,175,55,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Lunar Myth Cover Generator</h1>
+    <p class="subtitle">Generate branded title cards, thumbnails, and social assets.</p>
+
+    <div class="controls">
+      <div class="control-group">
+        <label>Main Title</label>
+        <input type="text" id="mainTitle" value="LUNAR MYTH" oninput="draw()">
+      </div>
+      <div class="control-group">
+        <label>Subtitle</label>
+        <input type="text" id="subTitle" value="KINTSUGI BIBLE" oninput="draw()">
+      </div>
+      <div class="control-group">
+        <label>Tagline</label>
+        <input type="text" id="tagline" value="Break. Repair. Glow. Repeat." oninput="draw()">
+      </div>
+      <div class="control-group">
+        <label>Creator Name</label>
+        <input type="text" id="creator" value="By Jennipher Troup" oninput="draw()">
+      </div>
+      <div class="control-group">
+        <label>Format</label>
+        <select id="format" onchange="draw()">
+          <option value="book">Book Cover (2:3)</option>
+          <option value="square">Social Square (1:1)</option>
+          <option value="wide">Banner (3:1)</option>
+          <option value="story">Story/Reel (9:16)</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>Mood</label>
+        <select id="mood" onchange="draw()">
+          <option value="gold">Golden Kintsugi</option>
+          <option value="teal">Lunarpunk Teal</option>
+          <option value="magenta">Sacred Magenta</option>
+          <option value="dark">Obsidian Depth</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="canvas-wrap">
+      <canvas id="coverCanvas"></canvas>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="downloadCover()">Download PNG</button>
+      <button class="btn btn-secondary" onclick="randomize()">Randomize Mood</button>
+    </div>
+
+    <div class="presets">
+      <span>Quick Presets:</span>
+      <button class="preset-btn" onclick="applyPreset('book')">Book Cover</button>
+      <button class="preset-btn" onclick="applyPreset('thumbnail')">Thumbnail</button>
+      <button class="preset-btn" onclick="applyPreset('banner')">Twitter Banner</button>
+      <button class="preset-btn" onclick="applyPreset('story')">Instagram Story</button>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('coverCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const formats = {
+      book: { w: 800, h: 1200 },
+      square: { w: 800, h: 800 },
+      wide: { w: 1200, h: 400 },
+      story: { w: 450, h: 800 }
+    };
+
+    const moods = {
+      gold: { bg1: '#0a0a0a', bg2: '#1a1200', accent: '#D4AF37', accent2: '#FFD700', glow: 'rgba(212,175,55,0.15)' },
+      teal: { bg1: '#0a0a0a', bg2: '#001a1a', accent: '#20B2AA', accent2: '#40E0D0', glow: 'rgba(32,178,170,0.15)' },
+      magenta: { bg1: '#0a0a0a', bg2: '#1a001a', accent: '#C71585', accent2: '#FF69B4', glow: 'rgba(199,21,133,0.15)' },
+      dark: { bg1: '#050505', bg2: '#0a0a0a', accent: '#888888', accent2: '#cccccc', glow: 'rgba(255,255,255,0.05)' }
+    };
+
+    function draw() {
+      const format = document.getElementById('format').value;
+      const moodKey = document.getElementById('mood').value;
+      const mood = moods[moodKey];
+      const { w, h } = formats[format];
+
+      canvas.width = w;
+      canvas.height = h;
+
+      // Background
+      const grad = ctx.createRadialGradient(w/2, h/3, 0, w/2, h/2, w);
+      grad.addColorStop(0, mood.bg2);
+      grad.addColorStop(1, mood.bg1);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+
+      // Noise texture
+      for (let i = 0; i < 3000; i++) {
+        ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.02})`;
+        ctx.fillRect(Math.random() * w, Math.random() * h, 1, 1);
+      }
+
+      // Kintsugi crack lines
+      ctx.strokeStyle = mood.accent;
+      ctx.lineWidth = 1.5;
+      ctx.globalAlpha = 0.3;
+      for (let i = 0; i < 5; i++) {
+        ctx.beginPath();
+        let x = Math.random() * w;
+        let y = Math.random() * h;
+        ctx.moveTo(x, y);
+        for (let j = 0; j < 8; j++) {
+          x += (Math.random() - 0.5) * 150;
+          y += (Math.random() - 0.5) * 150;
+          ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+
+      // Glow orbs
+      ctx.fillStyle = mood.glow;
+      ctx.beginPath();
+      ctx.arc(w * 0.2, h * 0.3, w * 0.25, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(w * 0.8, h * 0.7, w * 0.2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Title positioning based on format
+      let titleY, subY, tagY, creatorY;
+      if (format === 'wide') {
+        titleY = h * 0.45;
+        subY = h * 0.65;
+        tagY = h * 0.85;
+        creatorY = h * 0.95;
+      } else if (format === 'story') {
+        titleY = h * 0.35;
+        subY = h * 0.45;
+        tagY = h * 0.6;
+        creatorY = h * 0.75;
+      } else {
+        titleY = h * 0.25;
+        subY = h * 0.38;
+        tagY = h * 0.55;
+        creatorY = h * 0.72;
+      }
+
+      // Main title
+      ctx.font = format === 'wide' ? `900 ${h * 0.35}px "Cinzel Decorative"` : `900 ${w * 0.1}px "Cinzel Decorative"`;
+      ctx.textAlign = 'center';
+      ctx.fillStyle = mood.accent;
+      ctx.shadowColor = mood.accent;
+      ctx.shadowBlur = 20;
+      ctx.fillText(document.getElementById('mainTitle').value, w/2, titleY);
+      ctx.shadowBlur = 0;
+
+      // Subtitle
+      ctx.font = format === 'wide' ? `700 ${h * 0.2}px "Cinzel Decorative"` : `700 ${w * 0.055}px "Cinzel Decorative"`;
+      ctx.fillStyle = mood.accent2;
+      ctx.fillText(document.getElementById('subTitle').value, w/2, subY);
+
+      // Decorative line
+      ctx.strokeStyle = mood.accent;
+      ctx.lineWidth = 2;
+      const lineW = format === 'wide' ? w * 0.3 : w * 0.4;
+      ctx.beginPath();
+      ctx.moveTo(w/2 - lineW/2, tagY - h * 0.03);
+      ctx.lineTo(w/2 + lineW/2, tagY - h * 0.03);
+      ctx.stroke();
+
+      // Tagline
+      ctx.font = format === 'wide' ? `italic 400 ${h * 0.1}px "EB Garamond"` : `italic 400 ${w * 0.035}px "EB Garamond"`;
+      ctx.fillStyle = '#a09888';
+      ctx.fillText(document.getElementById('tagline').value, w/2, tagY);
+
+      // Creator
+      ctx.font = format === 'wide' ? `400 ${h * 0.08}px "EB Garamond"` : `400 ${w * 0.03}px "EB Garamond"`;
+      ctx.fillStyle = mood.accent;
+      ctx.globalAlpha = 0.7;
+      ctx.fillText(document.getElementById('creator').value, w/2, creatorY);
+      ctx.globalAlpha = 1;
+
+      // Corner decorations
+      const cornerSize = w * 0.06;
+      ctx.strokeStyle = mood.accent;
+      ctx.lineWidth = 1;
+      ctx.globalAlpha = 0.4;
+      // Top-left
+      ctx.beginPath(); ctx.moveTo(20, 20 + cornerSize); ctx.lineTo(20, 20); ctx.lineTo(20 + cornerSize, 20); ctx.stroke();
+      // Top-right
+      ctx.beginPath(); ctx.moveTo(w - 20, 20 + cornerSize); ctx.lineTo(w - 20, 20); ctx.lineTo(w - 20 - cornerSize, 20); ctx.stroke();
+      // Bottom-left
+      ctx.beginPath(); ctx.moveTo(20, h - 20 - cornerSize); ctx.lineTo(20, h - 20); ctx.lineTo(20 + cornerSize, h - 20); ctx.stroke();
+      // Bottom-right
+      ctx.beginPath(); ctx.moveTo(w - 20, h - 20 - cornerSize); ctx.lineTo(w - 20, h - 20); ctx.lineTo(w - 20 - cornerSize, h - 20); ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+
+    function downloadCover() {
+      const link = document.createElement('a');
+      link.download = `lunar-myth-cover-${Date.now()}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    function randomize() {
+      const moodKeys = Object.keys(moods);
+      document.getElementById('mood').value = moodKeys[Math.floor(Math.random() * moodKeys.length)];
+      draw();
+    }
+
+    function applyPreset(name) {
+      if (name === 'book') {
+        document.getElementById('format').value = 'book';
+        document.getElementById('mainTitle').value = 'LUNAR MYTH';
+        document.getElementById('subTitle').value = 'KINTSUGI BIBLE';
+        document.getElementById('tagline').value = '357+ Hyper-Tactile Mythpunk Prompts';
+        document.getElementById('creator').value = 'By Jennipher Troup';
+        document.getElementById('mood').value = 'gold';
+      } else if (name === 'thumbnail') {
+        document.getElementById('format').value = 'square';
+        document.getElementById('mainTitle').value = 'LUNAR';
+        document.getElementById('subTitle').value = 'MYTH';
+        document.getElementById('tagline').value = 'Break. Repair. Glow.';
+        document.getElementById('creator').value = '';
+        document.getElementById('mood').value = 'gold';
+      } else if (name === 'banner') {
+        document.getElementById('format').value = 'wide';
+        document.getElementById('mainTitle').value = 'LUNAR MYTH';
+        document.getElementById('subTitle').value = 'KINTSUGI BIBLE';
+        document.getElementById('tagline').value = 'The Complete Creative System';
+        document.getElementById('creator').value = 'By Jennipher Troup';
+        document.getElementById('mood').value = 'teal';
+      } else if (name === 'story') {
+        document.getElementById('format').value = 'story';
+        document.getElementById('mainTitle').value = 'NEW';
+        document.getElementById('subTitle').value = 'RELEASE';
+        document.getElementById('tagline').value = 'Link in bio';
+        document.getElementById('creator').value = '@jenniphertroup';
+        document.getElementById('mood').value = 'magenta';
+      }
+      draw();
+    }
+
+    draw();
+  </script>
+</body>
+</html>
